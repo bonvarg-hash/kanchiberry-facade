@@ -134,11 +134,6 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
     </dl>
   </section>
 
-  <section aria-labelledby="h-steps">
-    <h2 id="h-steps">Revision sequence</h2>
-    <p>Each change was applied on top of the one before. Select any image to open it full size.</p>
-    <div class="steps" id="steps"></div>
-  </section>
 
   <footer>Concept visualisation edited from a site photo. Colours on screen are indicative; confirm the ACP shade against a physical sample.</footer>
 </div>
@@ -169,23 +164,9 @@ Object.values(files).forEach(o=>Object.values(o).forEach(n=>{const i=new Image()
 
 const r=$('cmp-range'); const setPos=()=>$('cmp').style.setProperty('--pos',r.value+'%'); r.addEventListener('input',setPos); setPos();
 
-const steps=[
- ['01-original','Existing facade','Site photo as received.'],
- ['02-rounded-corner','Rounded left corner','Sharp box corner replaced with a rolled radius.'],
- ['03-signboard-acp','Signboard in #35051F','Fascia recoloured, logo and letters untouched.'],
- ['04-columns-acp','Columns matched','Front columns and upper cladding in the same colour.'],
- ['05-day-neutral-white','Lit sign, neutral white','Daylight, neutral white faces, black returns.'],
- ['06-day-warm-white','Lit sign, warm white','Daylight, warm white faces.'],
- ['07-dusk-neutral-white','Dusk, neutral white','Evening light, shop and downlights on.'],
- ['08-dusk-warm-white','Dusk, warm white','Evening light with warm white faces.'],
- ['09-day-mixed','Day, mixed','Warm white symbol, neutral white wordmark.'],
- ['10-dusk-mixed','Dusk, mixed','Warm white symbol, neutral white wordmark.'],
-];
-$('steps').innerHTML=steps.map((s,i)=>`<button class="thumb" data-src="img/${s[0]}.jpg"><img loading="lazy" src="img/${s[0]}.jpg" alt="${s[1]}"><strong><span class="num">${String(i+1).padStart(2,'0')}</span>${s[1]}</strong><span>${s[2]}</span></button>`).join('');
 
 const lb=$('lb'),lbImg=$('lb-img');
 function openLb(src,alt){lbImg.src=src;lbImg.alt=alt||'';lb.classList.remove('fit');$('lb-fit').textContent='Fit to screen';lb.hidden=false;$('lb-close').focus()}
-document.querySelectorAll('.thumb').forEach(t=>t.addEventListener('click',()=>openLb(t.dataset.src,t.querySelector('img').alt)));
 $('hero-zoom').addEventListener('click',()=>openLb($('hero').src,$('hero').alt));
 $('lb-close').addEventListener('click',()=>{lb.hidden=true});
 $('lb-fit').addEventListener('click',()=>{const f=lb.classList.toggle('fit');$('lb-fit').textContent=f?'Actual size':'Fit to screen'});
