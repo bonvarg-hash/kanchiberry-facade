@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Kanchiberry shopfront concept renders: rounded ACP fascia, illuminated sign and glass shopfront in day and dusk light.">
+<meta property="og:title" content="Kanchiberry Facade Concepts">
+<meta property="og:image" content="img/08-dusk-warm-white.jpg">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,-apple-system,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Kanchiberry Facade Concepts</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one dark "night street" column; a large switchable hero render, then compare slider, spec strip and the revision sequence. */
+:root{
+  --plum:#35051F;          /* the ACP colour itself is the page ground */
+  --plum-2:#45102C;
+  --line:#6A2A4C;
+  --warm:#FFECCA;          /* warm-white letter face */
+  --text:#EDE3E8;
+  --muted:#B6A3AE;
+  --display:"Marcellus","Cormorant Garamond",Georgia,serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  color-scheme:dark;
+}
+body{background:var(--plum);color:var(--text);font-family:var(--body);font-size:15px;line-height:1.55}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 72px;display:flex;flex-direction:column;gap:64px}
+header{display:flex;flex-direction:column;gap:10px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,5vw,56px);line-height:1.05;margin:0;color:var(--warm);text-wrap:balance}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(24px,3vw,32px);margin:0;color:var(--warm);text-wrap:balance}
+p{margin:0;max-width:65ch;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:18px}
+
+/* hero viewer */
+.controls{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px}
+.seg button{font:500 13px var(--body);color:var(--muted);background:none;border:0;border-radius:999px;padding:7px 16px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--warm);color:var(--plum)}
+.seg button:focus-visible,.thumb:focus-visible,.zoom:focus-visible{outline:2px solid var(--warm);outline-offset:2px}
+.seg-label{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-right:8px}
+.frame{position:relative;border-radius:6px;overflow:hidden;background:#000;aspect-ratio:1365/768;max-width:100%}
+.frame img{display:block;width:100%;height:100%;object-fit:cover;transition:opacity .35s ease}
+.zoom{position:absolute;right:12px;bottom:12px;font:500 12px var(--body);color:var(--plum);background:var(--warm);border:0;border-radius:999px;padding:7px 14px;cursor:pointer}
+.caption{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.closeup{border-radius:6px;overflow:hidden;aspect-ratio:1830/660;max-width:100%;background:#000}
+.closeup img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* compare */
+.compare{position:relative;aspect-ratio:1365/768;max-width:100%;border-radius:6px;overflow:hidden;background:#000;user-select:none;touch-action:pan-y}
+.compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.compare .after{clip-path:inset(0 0 0 var(--pos,50%))}
+.handle{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:2px;background:var(--warm);transform:translateX(-1px);pointer-events:none}
+.handle::after{content:"";position:absolute;top:50%;left:50%;width:34px;height:34px;border-radius:50%;background:var(--warm);transform:translate(-50%,-50%);box-shadow:0 0 0 4px rgba(53,5,31,.5)}
+.tag{position:absolute;top:12px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:rgba(53,5,31,.75);color:var(--text);padding:4px 9px;border-radius:4px}
+.tag.l{left:12px}.tag.r{right:12px}
+.compare input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+
+/* spec */
+.spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.spec div{background:var(--plum-2);padding:18px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.spec dt{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.spec dd{margin:0;font-size:16px;color:var(--text)}
+.sw{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:8px;border:1px solid var(--line)}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.thumb{display:flex;flex-direction:column;gap:10px;background:none;border:0;padding:0;text-align:left;color:inherit;cursor:zoom-in;font:inherit}
+.thumb img{width:100%;aspect-ratio:1365/768;object-fit:cover;border-radius:4px;display:block}
+.thumb strong{font-weight:500;color:var(--text)}
+.thumb span{font-size:13px;color:var(--muted)}
+.num{font-family:var(--mono);font-size:12px;color:var(--warm);margin-right:8px}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:20;background:rgba(10,4,8,.96);overflow:auto;padding:calc(env(safe-area-inset-top,0px) + 56px) max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px))}
+.lb img{display:block;max-width:none;width:4095px;margin:0 auto}
+.lb.fit img{width:100%;max-width:100%}
+.lb-bar{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);right:max(16px,env(safe-area-inset-right,0px));display:flex;gap:8px;z-index:21}
+.lb-bar button{font:500 13px var(--body);background:var(--warm);color:var(--plum);border:0;border-radius:999px;padding:8px 14px;cursor:pointer}
+footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:20px}
+@media (prefers-reduced-motion:reduce){.frame img{transition:none}}
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Shopfront signage · concept renders</span>
+    <h1>Kanchiberry Facade Concepts</h1>
+    <p>A rounded ACP fascia in deep wine (#35051F) with front-lit channel letters on black returns and a black-framed glass shopfront, shown in daylight and at dusk with neutral white or warm white faces. Every render is 4095 × 2304 px. Use “View full size” to inspect the detail.</p>
+  </header>
+
+  <section aria-labelledby="h-final">
+    <h2 id="h-final">Lighting options</h2>
+    <div class="controls">
+      <div><span class="seg-label">Time</span><span class="seg" role="group" aria-label="Time of day">
+        <button id="t-dusk" data-k="time" data-v="dusk" aria-pressed="true">Dusk</button>
+        <button id="t-day" data-k="time" data-v="day" aria-pressed="false">Day</button></span></div>
+      <div><span class="seg-label">Letter light</span><span class="seg" role="group" aria-label="Letter light colour">
+        <button id="c-warm" data-k="tone" data-v="warm" aria-pressed="true">Warm white</button>
+        <button id="c-neutral" data-k="tone" data-v="neutral" aria-pressed="false">Neutral white</button>
+        <button id="c-mixed" data-k="tone" data-v="mixed" aria-pressed="false">Warm symbol + neutral wordmark</button></span></div>
+    </div>
+    <div class="frame">
+      <img id="hero" src="img/08-dusk-warm-white.jpg" alt="Kanchiberry storefront at dusk with warm white illuminated sign">
+      <button class="zoom" id="hero-zoom">View full size</button>
+    </div>
+    <div class="closeup"><img id="sign" src="img/sign-dusk-warm.jpg" alt="Close-up of the illuminated Kanchiberry sign"></div>
+    <span class="caption" id="cap">Dusk · warm white faces (≈3000K) · black returns</span>
+  </section>
+
+  <section aria-labelledby="h-cmp">
+    <h2 id="h-cmp">Warm white vs neutral white</h2>
+    <p>Drag across the photo to compare the two letter colours. It follows the time of day selected above.</p>
+    <div class="compare" id="cmp">
+      <img id="cmp-before" src="img/08-dusk-warm-white.jpg" alt="Warm white sign">
+      <img class="after" id="cmp-after" src="img/07-dusk-neutral-white.jpg" alt="Neutral white sign">
+      <div class="handle"></div>
+      <span class="tag l">Warm white</span><span class="tag r">Neutral white</span>
+      <input type="range" id="cmp-range" min="0" max="100" value="50" aria-label="Compare warm white and neutral white">
+    </div>
+  </section>
+
+  <section aria-labelledby="h-spec">
+    <h2 id="h-spec">Specification</h2>
+    <dl class="spec">
+      <div><dt>ACP cladding</dt><dd><span class="sw" style="background:#35051F"></span>#35051F deep wine</dd></div>
+      <div><dt>Fascia, left end</dt><dd>Rolled radius corner, single curved sheet</dd></div>
+      <div><dt>Also clad</dt><dd>Front columns and upper-right strip</dd></div>
+      <div><dt>Letter faces</dt><dd><span class="sw" style="background:#FFECCA"></span>Warm white ≈3000K, neutral white, or warm symbol with neutral wordmark</dd></div>
+      <div><dt>Shopfront</dt><dd>Glass wall on the front and left side, black frames, centre double door</dd></div>
+      <div><dt>Letter returns</dt><dd><span class="sw" style="background:#0C0C0D"></span>Black, unlit sides</dd></div>
+    </dl>
+  </section>
+
+  <section aria-labelledby="h-steps">
+    <h2 id="h-steps">Revision sequence</h2>
+    <p>Each change was applied on top of the one before. Select any image to open it full size.</p>
+    <div class="steps" id="steps"></div>
+  </section>
+
+  <footer>Concept visualisation edited from a site photo. Colours on screen are indicative; confirm the ACP shade against a physical sample.</footer>
+</div>
+
+<div class="lb" id="lb" hidden>
+  <div class="lb-bar"><button id="lb-fit">Fit to screen</button><button id="lb-close">Close</button></div>
+  <img id="lb-img" alt="">
+</div>
+
+<script>
+const files={dusk:{warm:'08-dusk-warm-white',neutral:'07-dusk-neutral-white',mixed:'10-dusk-mixed'},day:{warm:'06-day-warm-white',neutral:'05-day-neutral-white',mixed:'09-day-mixed'}};
+const toneText={warm:'warm white faces (≈3000K)',neutral:'neutral white faces',mixed:'warm white symbol, neutral white wordmark'};
+const state={time:'dusk',tone:'warm'};
+const $=id=>document.getElementById(id);
+function render(){
+  const f='img/'+files[state.time][state.tone]+'.jpg';
+  $('hero').src=f;
+  $('cmp-before').src='img/'+files[state.time].warm+'.jpg';
+  $('cmp-after').src='img/'+files[state.time].neutral+'.jpg';
+  $('hero').alt=`Kanchiberry storefront, ${state.time}, ${toneText[state.tone]}`;
+  $('sign').src=`img/sign-${state.time}-${state.tone}.jpg`;
+  $('cap').textContent=`${state.time==='dusk'?'Dusk':'Day'} · ${toneText[state.tone]} · black returns`;
+  document.querySelectorAll('.seg button').forEach(b=>b.setAttribute('aria-pressed',state[b.dataset.k]===b.dataset.v));
+}
+document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>{state[b.dataset.k]=b.dataset.v;render()}));
+// preload variants
+Object.values(files).forEach(o=>Object.values(o).forEach(n=>{const i=new Image();i.src='img/'+n+'.jpg'}));
+
+const r=$('cmp-range'); const setPos=()=>$('cmp').style.setProperty('--pos',r.value+'%'); r.addEventListener('input',setPos); setPos();
+
+const steps=[
+ ['01-original','Existing facade','Site photo as received.'],
+ ['02-rounded-corner','Rounded left corner','Sharp box corner replaced with a rolled radius.'],
+ ['03-signboard-acp','Signboard in #35051F','Fascia recoloured, logo and letters untouched.'],
+ ['04-columns-acp','Columns matched','Front columns and upper cladding in the same colour.'],
+ ['05-day-neutral-white','Lit sign, neutral white','Daylight, neutral white faces, black returns.'],
+ ['06-day-warm-white','Lit sign, warm white','Daylight, warm white faces.'],
+ ['07-dusk-neutral-white','Dusk, neutral white','Evening light, shop and downlights on.'],
+ ['08-dusk-warm-white','Dusk, warm white','Evening light with warm white faces.'],
+ ['09-day-mixed','Day, mixed','Warm white symbol, neutral white wordmark.'],
+ ['10-dusk-mixed','Dusk, mixed','Warm white symbol, neutral white wordmark.'],
+];
+$('steps').innerHTML=steps.map((s,i)=>`<button class="thumb" data-src="img/${s[0]}.jpg"><img loading="lazy" src="img/${s[0]}.jpg" alt="${s[1]}"><strong><span class="num">${String(i+1).padStart(2,'0')}</span>${s[1]}</strong><span>${s[2]}</span></button>`).join('');
+
+const lb=$('lb'),lbImg=$('lb-img');
+function openLb(src,alt){lbImg.src=src;lbImg.alt=alt||'';lb.classList.remove('fit');$('lb-fit').textContent='Fit to screen';lb.hidden=false;$('lb-close').focus()}
+document.querySelectorAll('.thumb').forEach(t=>t.addEventListener('click',()=>openLb(t.dataset.src,t.querySelector('img').alt)));
+$('hero-zoom').addEventListener('click',()=>openLb($('hero').src,$('hero').alt));
+$('lb-close').addEventListener('click',()=>{lb.hidden=true});
+$('lb-fit').addEventListener('click',()=>{const f=lb.classList.toggle('fit');$('lb-fit').textContent=f?'Actual size':'Fit to screen'});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.hidden=true});
+</script>
+
+</html>
